@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.gentics</groupId>
+    <artifactId>mesh-manifold</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <manifold-version>0.58-alpha</manifold-version>
+    </properties>
+
+    <modules>
+        <module>mesh-manifold-schemas</module>
+        <module>mesh-manifold-schemas-test</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>systems.manifold</groupId>
+            <artifactId>manifold-all</artifactId>
+            <version>${manifold-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.gentics.mesh</groupId>
+            <artifactId>mesh-rest-client</artifactId>
+            <version>0.31.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>8</source>
+                    <target>8</target>
+                    <compilerArgs>
+                        <!--Add the Manifold plugin, with string templates enabled-->
+                        <arg>-Xplugin:Manifold strings exceptions</arg>
+
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+
+    <repositories>
+        <repository>
+            <id>maven.gentics.com</id>
+            <name>Gentics Maven Repository</name>
+            <url>https://maven.gentics.com/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+</project>
